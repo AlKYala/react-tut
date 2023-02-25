@@ -1,17 +1,21 @@
 import {useState} from "react";
+import KomponenteMitProp from "./KomponenteMitProp";
 
 function MyFirstComponent() {
 
     const [myNum, setMyNum] = useState(0);
+    const [message, setMessage] = useState("Nothing changed");
 
     /*Methodendefinition in react auf Funktionale art und weise ist richtig behindert
     In die Lambda parameter gehen deine Parameter rein*/
     const increaseNum = () => {
         setMyNum(myNum+1);
+        setMessage("Increased");
     }
 
     const decreaseNum = () => {
         setMyNum(myNum-1);
+        setMessage("Decreased");
     }
 
     return (
@@ -28,6 +32,11 @@ function MyFirstComponent() {
                             onClick={() => decreaseNum()}
                     >Decrease</button>
                 </div>
+                {/* Du brauchst keine Variablen fuer Props vordefinieren
+                 Gib einfach ein, wie der Kenner fuer den Wert ist und
+                 Gib ihm die Nachricht
+                 */}
+                <KomponenteMitProp msg={message}></KomponenteMitProp>
             </div>
         </div>
     );
