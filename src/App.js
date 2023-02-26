@@ -5,6 +5,7 @@ import MyFirstComponent from "./myFirstComponent";
 import "bootstrap/dist/css/bootstrap.min.css";
 // Bootstrap Bundle JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import InputKomponente from "./InputKomponente";
 
 //the definition of our component
 function App() {
@@ -12,6 +13,7 @@ function App() {
     <div className="App">
       <p>Vergil status</p>
     <MyFirstComponent/>
+        <InputKomponente/>
     </div>
   );
 }
