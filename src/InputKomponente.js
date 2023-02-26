@@ -21,6 +21,10 @@ function InputKomponente() {
         setMyBooleanInput(!myBooleanInput);
     }
 
+    const myMap = [{key0: "val0"}, {key1: "val1"}, {key2: "val2"}]
+
+    const myArr = ["elem0", "elem1", "elem2"];
+
     return (
         <div>
             <div className="input-group mb-3">
@@ -34,6 +38,12 @@ function InputKomponente() {
                        checked={myBooleanInput} id="flexCheckChecked" />
             </div>
             {myBooleanInput && <p> Box value true </p>}
+            {
+                myArr.map((elem) => <p>{elem}</p>)
+            }
+            {
+                myMap.map((key, value) => <p>{value}</p>)
+            }
         </div>
     );
 }
