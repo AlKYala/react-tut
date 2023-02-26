@@ -1,21 +1,30 @@
 import {useState} from "react";
 import KomponenteMitProp from "./KomponenteMitProp";
+import {useDispatch, useSelector} from "react-redux";
+import {setCounter} from "./redux/actions/actions";
 
 function MyFirstComponent() {
 
-    const [myNum, setMyNum] = useState(0);
+    let counter = useSelector((state) => state.counter);
+    counter = (counter == null) ? 0 : counter;
+
+    const [myNum, setMyNum] = useState(counter);
     const [message, setMessage] = useState("Nothing changed");
+
+    const disptach = useDispatch();
 
     /*Methodendefinition in react auf Funktionale art und weise ist richtig behindert
     In die Lambda parameter gehen deine Parameter rein*/
     const increaseNum = () => {
         setMyNum(myNum+1);
         setMessage("Increased");
+        disptach(setCounter(myNum));
     }
 
     const decreaseNum = () => {
         setMyNum(myNum-1);
         setMessage("Decreased");
+        disptach(setCounter(myNum));
     }
 
     return (

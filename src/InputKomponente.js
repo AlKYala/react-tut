@@ -1,12 +1,20 @@
 import {useState} from "react";
+import {setCounter, setMyText} from "./redux/actions/actions";
+import {useDispatch, useSelector} from "react-redux";
 
 function InputKomponente() {
 
-    const[myTextInput, setMyTextInput] = useState('Default Val');
+    const disptach = useDispatch();
+
+    let text = useSelector((state) => state.text);
+    text = (text == null) ? '' : text;
+
+    const[myTextInput, setMyTextInput] = useState(text);
     const[myBooleanInput, setMyBooleanInput] = useState(false);
 
     const handleTextChange = (val) => {
         setMyTextInput(val);
+        disptach(setMyText(val));
     }
 
     const flipBoolean = () => {
