@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import KomponenteMitProp from "./KomponenteMitProp";
 import {useDispatch, useSelector} from "react-redux";
 import {setCounter} from "./redux/actions/actions";
@@ -12,6 +12,33 @@ function MyFirstComponent() {
     const [message, setMessage] = useState("Nothing changed");
 
     const disptach = useDispatch();
+
+    useEffect(() => {
+        console.log("This use Effect runs when Component is Loaded first, Has Reactive Data Update (useState) and when this component is destroyed")
+    })
+
+    //when dependencies is empty array it runs on first load
+    useEffect(() => {
+        console.log("This use Effect runs when Component is Loaded first because dependencies, the array as second argument is empty Array")
+    }, [])
+
+    //listens to any dependency - use reactive data for this
+    useEffect(() => {
+        console.log("This use Effect runs when myNum is updated")
+    }, [myNum])
+
+    useEffect(() => {
+        console.log("This use Effect runs when message is updated")
+    }, [message])
+
+    useEffect(() => {
+        console.log("This use Effect runs when message or myNum is updated")
+    }, [myNum, message])
+
+    //With return the code runs before Component is destroyed
+    useEffect(() => {
+        return () => console.log("This use Effect runs when Component is destroyed")
+    })
 
     /*Methodendefinition in react auf Funktionale art und weise ist richtig behindert
     In die Lambda parameter gehen deine Parameter rein*/
