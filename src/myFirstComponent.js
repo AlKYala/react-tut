@@ -54,6 +54,8 @@ function MyFirstComponent() {
         disptach(setCounter(myNum));
     }
 
+    const variableAusConfig = process.env.REACT_APP_MY_CONFIG_VAR;
+
     return (
         <div>
             <div className="container">
@@ -73,6 +75,7 @@ function MyFirstComponent() {
                  Gib ihm die Nachricht
                  */}
                 <KomponenteMitProp msg={message}></KomponenteMitProp>
+                <p>{variableAusConfig}</p>
             </div>
         </div>
     );
